@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInputHandlerBehaviour : MonoBehaviour
 {
-    public event Action<Vector2> OnPlayerTouch;
+    static public event Action<Vector2> OnPlayerTouch;
     private bool _isMobile;
 
     private void Start()
