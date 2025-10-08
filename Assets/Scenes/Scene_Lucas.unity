@@ -372,7 +372,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectionBehaviour
   DetectionDistance: 80
-  actualDistance: 0
+  ActualDistance: 0
+  StartDetectTime: 0
+  TimeToDetect: 4
+  IsFind: 0
+  time: 0
   _mousePos: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

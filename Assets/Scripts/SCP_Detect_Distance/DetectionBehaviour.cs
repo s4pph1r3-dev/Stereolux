@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class DetectionBehaviour : MonoBehaviour
 {
-    public float DetectionDistance;
+    [SerializeField] float _detectionDistance;
+    [SerializeField] float _actualDistance;
 
-    public float actualDistance;
+    [SerializeField] float _startDetectTime = 0;
+    [SerializeField] float _timeToDetect;
+
+    private bool _isFind;
+
+    [SerializeField] private float _time;
 
     [SerializeField] private Vector2 _mousePos;
 
@@ -23,10 +29,28 @@ public class DetectionBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        actualDistance = Vector3.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(_mousePos));
-        if (Vector3.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(_mousePos)) <= DetectionDistance)
+        _time = Time.time;
+
+        if (_isFind) return;
+
+        _actualDistance = Vector3.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(_mousePos));
+
+        if (_actualDistance <= _detectionDistance)
         {
-            Debug.Log("Hey, listen ! (mais sur jsp quel plateforme)");
+            if(_startDetectTime == 0)
+            {
+                Debug.Log("Hey, Start listen ! (mais sur jsp quel plateforme)");
+                _startDetectTime = Time.time;
+            }
+            else if (Time.time - _startDetectTime >= _timeToDetect)
+            {
+                Debug.Log("I'm find !:D");
+                _isFind = true;
+            }
+        }
+        else
+        {
+            _startDetectTime = 0;
         }
     }
 }
