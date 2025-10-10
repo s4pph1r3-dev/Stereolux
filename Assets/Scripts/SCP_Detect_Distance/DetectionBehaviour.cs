@@ -3,34 +3,39 @@ using UnityEngine;
 
 public class DetectionBehaviour : MonoBehaviour
 {
-    [SerializeField] float _detectionDistance;
-    [SerializeField] float _actualDistance;
+    #region Initialization
 
-    [SerializeField] float _startDetectTime = 0;
-    [SerializeField] float _timeToDetect;
+    public static event Action<DetectionBehaviour> OnObjectFound;
+    public static event Action<DetectionBehaviour> OnObjectWaiting;
 
+    [field: SerializeField] public bool IsProgramm { get; private set; }
+    [SerializeField] private float _detectionDistance;
+    [SerializeField] private float _timeToDetect;
+
+    private float _actualDistance;
+    private float _startDetectTime = 0;
+    private Vector2 _mousePos;
     private bool _isFind;
 
-    [SerializeField] private float _time;
-
-    [SerializeField] private Vector2 _mousePos;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         PlayerInputHandlerBehaviour.OnPlayerTouch += GetMousePosition;
     }
 
-    private void GetMousePosition(Vector2 vector)
+    private void OnDrawGizmos()
     {
-        _mousePos = vector;
+        Gizmos.DrawWireSphere(transform.position, _detectionDistance / 100f);
     }
 
-    // Update is called once per frame
+    private void GetMousePosition(Vector2 pos)
+    {
+        _mousePos = pos;
+    }
+
+    #endregion
+
     void Update()
     {
-        _time = Time.time;
-
         if (_isFind) return;
 
         _actualDistance = Vector3.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(_mousePos));
@@ -39,18 +44,17 @@ public class DetectionBehaviour : MonoBehaviour
         {
             if(_startDetectTime == 0)
             {
-                Debug.Log("Hey, Start listen ! (mais sur jsp quel plateforme)");
+                OnObjectWaiting?.Invoke(this);
                 _startDetectTime = Time.time;
             }
+
             else if (Time.time - _startDetectTime >= _timeToDetect)
             {
-                Debug.Log("I'm find !:D");
+                OnObjectFound?.Invoke(this);
                 _isFind = true;
             }
         }
-        else
-        {
-            _startDetectTime = 0;
-        }
+
+        else _startDetectTime = 0;
     }
 }
