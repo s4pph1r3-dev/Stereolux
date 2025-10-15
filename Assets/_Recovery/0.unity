@@ -1548,7 +1548,6 @@ GameObject:
   - component: {fileID: 2068821849}
   - component: {fileID: 2068821848}
   - component: {fileID: 2068821847}
-  - component: {fileID: 2068821851}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1639,26 +1638,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2068821851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068821846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca069e2ce84659c4ca76957f487cff77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ManagerGalleryBehaviour
-  _LockSprite:
-  - {fileID: 1363822142}
-  - {fileID: 1932328977}
-  - {fileID: 798736399}
-  - {fileID: 1595276872}
-  - {fileID: 2079008215}
-  - {fileID: 2039787474}
-  - {fileID: 1503996798}
 --- !u!1 &2079008215
 GameObject:
   m_ObjectHideFlags: 0
