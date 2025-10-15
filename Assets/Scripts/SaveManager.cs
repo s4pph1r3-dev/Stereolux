@@ -4,7 +4,7 @@ public static class SaveManager
 {
     private const bool DOES_ERASE_ON_LOAD = true;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
     public static void Awake()
     {
         if (DOES_ERASE_ON_LOAD)

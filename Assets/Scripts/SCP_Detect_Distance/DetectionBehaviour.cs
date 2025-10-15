@@ -21,7 +21,8 @@ public class DetectionBehaviour : MonoBehaviour
     void Start()
     {
         PlayerInputHandlerBehaviour.OnPlayerTouch += GetMousePosition;
-        OnObjectSaveLoaded?.Invoke(this, this.GetComponent<SaveableItemBehaviour>().IsFound);
+        _isFind = this.GetComponent<SaveableItemBehaviour>().IsFound;
+        OnObjectSaveLoaded?.Invoke(this, _isFind);
     }
 
     private void OnDrawGizmos()
