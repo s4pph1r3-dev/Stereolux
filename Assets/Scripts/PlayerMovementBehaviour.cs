@@ -14,4 +14,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
     {
         transform.position = pos;
     }
+
+    private void OnDestroy()
+    {
+        PlayerInputHandlerBehaviour.OnPlayerTouch -= PlayerMovement;
+    }
 }

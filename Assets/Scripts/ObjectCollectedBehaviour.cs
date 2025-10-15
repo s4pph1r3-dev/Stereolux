@@ -13,23 +13,28 @@ public class ObjectCollectedBehaviour : MonoBehaviour
 
     private void WaitForCollection(DetectionBehaviour obj) // add feedbacks.
     {
-        print("Wait for " + obj.name + "...");
         obj.transform.localScale *= 1.1f;
     }
 
     private void ObjectCollected(DetectionBehaviour obj) // add feedbacks.
     {
-        print("You just collected " + obj.name + " !");
-
         if(obj.IsProgramm) _darkness.SetActive(false);
         else obj.gameObject.SetActive(false);
     }
 
     private void ObjectSaveLoaded(DetectionBehaviour obj, bool found)
     {
-        if(found){
+        if(found)
+        {
             if(obj.IsProgramm) _darkness.SetActive(false);
             else obj.gameObject.SetActive(false);
         }
+    }
+
+    private void OnDestroy()
+    {
+        DetectionBehaviour.OnObjectFound -= ObjectCollected;
+        DetectionBehaviour.OnObjectWaiting -= WaitForCollection;
+        DetectionBehaviour.OnObjectSaveLoaded -= ObjectSaveLoaded;
     }
 }
