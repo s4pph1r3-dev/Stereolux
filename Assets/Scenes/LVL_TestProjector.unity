@@ -472,6 +472,7 @@ GameObject:
   - component: {fileID: 407138928}
   - component: {fileID: 407138927}
   - component: {fileID: 407138926}
+  - component: {fileID: 407138929}
   m_Layer: 0
   m_Name: Hidden Page
   m_TagString: Untagged
@@ -567,6 +568,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1890703514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &407138929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407138925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db3600c6209b5849a87d6f0128e94c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableItem
+  _type: 1
+  _id: 1
 --- !u!1 &509757205
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,6 +865,7 @@ GameObject:
   - component: {fileID: 1218219934}
   - component: {fileID: 1218219933}
   - component: {fileID: 1218219935}
+  - component: {fileID: 1218219936}
   m_Layer: 0
   m_Name: Programm
   m_TagString: Untagged
@@ -945,6 +961,20 @@ MonoBehaviour:
   <IsProgramm>k__BackingField: 1
   _detectionDistance: 50
   _timeToDetect: 1
+--- !u!114 &1218219936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218219932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db3600c6209b5849a87d6f0128e94c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableItem
+  _type: 0
+  _id: 0
 --- !u!1 &1405264237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1106,7 @@ GameObject:
   - component: {fileID: 1476566312}
   - component: {fileID: 1476566311}
   - component: {fileID: 1476566313}
+  - component: {fileID: 1476566314}
   m_Layer: 0
   m_Name: Hidden Eye
   m_TagString: Untagged
@@ -1171,6 +1202,20 @@ MonoBehaviour:
   <IsProgramm>k__BackingField: 0
   _detectionDistance: 50
   _timeToDetect: 1
+--- !u!114 &1476566314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476566310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db3600c6209b5849a87d6f0128e94c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableItem
+  _type: 1
+  _id: 0
 --- !u!1 &1890703513
 GameObject:
   m_ObjectHideFlags: 0

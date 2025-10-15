@@ -8,6 +8,7 @@ public class ObjectCollectedBehaviour : MonoBehaviour
     {
         DetectionBehaviour.OnObjectFound += ObjectCollected;
         DetectionBehaviour.OnObjectWaiting += WaitForCollection;
+        DetectionBehaviour.OnObjectSaveLoaded += ObjectSaveLoaded;
     }
 
     private void WaitForCollection(DetectionBehaviour obj) // add feedbacks.
@@ -22,5 +23,13 @@ public class ObjectCollectedBehaviour : MonoBehaviour
 
         if(obj.IsProgramm) _darkness.SetActive(false);
         else obj.gameObject.SetActive(false);
+    }
+
+    private void ObjectSaveLoaded(DetectionBehaviour obj, bool found)
+    {
+        if(found){
+            if(obj.IsProgramm) _darkness.SetActive(false);
+            else obj.gameObject.SetActive(false);
+        }
     }
 }
