@@ -7,6 +7,7 @@ public class DetectionBehaviour : MonoBehaviour
 
     public static event Action<DetectionBehaviour> OnObjectFound;
     public static event Action<DetectionBehaviour> OnObjectWaiting;
+    public static event Action<DetectionBehaviour, bool> OnObjectSaveLoaded;
 
     [field: SerializeField] public bool IsProgramm { get; private set; }
     [SerializeField] private float _detectionDistance;
