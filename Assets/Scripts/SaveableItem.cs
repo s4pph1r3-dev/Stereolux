@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum ItemType{
@@ -23,10 +24,23 @@ public class SaveableItemBehaviour : MonoBehaviour
 
     void OnObjectFound(DetectionBehaviour behaviour)
     {
-        if (behaviour.gameObject == gameObject)
+        try
         {
-            SaveManager.SetAsFound(_type, _id);
-            DetectionBehaviour.OnObjectFound -= OnObjectFound;
+            if (behaviour.gameObject == gameObject)
+            {
+                SaveManager.SetAsFound(_type, _id);
+                DetectionBehaviour.OnObjectFound -= OnObjectFound;
+            }
         }
+
+        catch(Exception e)
+        {
+            //Ignored.
+        }
+    }
+
+    private void OnDestroy()
+    {
+        DetectionBehaviour.OnObjectFound -= OnObjectFound;
     }
 }

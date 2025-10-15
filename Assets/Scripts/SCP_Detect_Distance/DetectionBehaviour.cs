@@ -60,4 +60,9 @@ public class DetectionBehaviour : MonoBehaviour
 
         else _startDetectTime = 0;
     }
+
+    private void OnDestroy()
+    {
+        PlayerInputHandlerBehaviour.OnPlayerTouch -= GetMousePosition;
+    }
 }
