@@ -8,7 +8,7 @@ public class ObjectCollectedBehaviour : MonoBehaviour
     {
         DetectionBehaviour.OnObjectFound += ObjectCollected;
         DetectionBehaviour.OnObjectWaiting += WaitForCollection;
-        DetectionBehaviour.OnObjectSaveLoaded += ObjectSaveLoaded;
+        //DetectionBehaviour.OnObjectSaveLoaded += ObjectSaveLoaded;
     }
 
     private void WaitForCollection(DetectionBehaviour obj) // add feedbacks.
