@@ -19,22 +19,14 @@ public class ManagerGalleryBehaviour : MonoBehaviour
         {
             Destroy(this);
         }
-
-        SaveManager.SetAsFound(ItemType.PROGRAM, 0);
-        SaveManager.SetAsFound(ItemType.PROGRAM, 1);
-        SaveManager.SetAsFound(ItemType.PROGRAM, 2);
-        SaveManager.SetAsFound(ItemType.PROGRAM, 3);
-        SaveManager.SetAsFound(ItemType.PROGRAM, 4);
-        SaveManager.SetAsFound(ItemType.PROGRAM, 5);
-        SaveManager.SetAsFound(ItemType.PROGRAM, 6);
     }
 
     private void Start()
     {
-        JustDoIt();
+        LoadSave();
     }
 
-    public void JustDoIt()
+    public void LoadSave()
     {
         for (int i = 0; i < _LockSprite.Count; i++)
         {
@@ -43,5 +35,17 @@ public class ManagerGalleryBehaviour : MonoBehaviour
                 _LockSprite[i].SetActive(false);
             }
         }
+    }
+
+    public bool IsAllProgramFound()
+    {
+        for (int i = 0; i < _LockSprite.Count; i++)
+        {
+            if (!SaveManager.HasBeenFound(ItemType.PROGRAM, i))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
