@@ -7,9 +7,15 @@ public class SceneLoadingHandlerBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject _previousLevel;
 
-    private void Awake()
+    private void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex - 1 < 0) _previousLevel.SetActive(false);
+        if(ManagerGalleryBehaviour.Instance != null && ManagerGalleryBehaviour.Instance.IsAllProgramFound())
+        {
+            _previousLevel.SetActive(true);
+            return;
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings) _previousLevel.SetActive(false);
     }
 
     public async void LoadNextLevel() // Loops back ?

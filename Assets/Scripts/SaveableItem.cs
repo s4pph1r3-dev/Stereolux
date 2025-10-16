@@ -33,8 +33,9 @@ public class SaveableItemBehaviour : MonoBehaviour
             }
         }
 
-        catch(Exception e)
+        catch(Exception _)
         {
+            _.ToString();
             //Ignored.
         }
     }

@@ -14,7 +14,7 @@ public class PlayerInputHandlerBehaviour : MonoBehaviour
     private void Update()
     {
         // Mobile controls.
-        if (_isMobile)
+        if (_isMobile && Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             OnPlayerTouch?.Invoke(Camera.main.ScreenToWorldPoint(touch.position));

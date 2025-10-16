@@ -10,19 +10,19 @@ public class DetectionBehaviour : MonoBehaviour
     public static event Action<DetectionBehaviour, bool> OnObjectSaveLoaded;
 
     [field: SerializeField] public bool IsProgramm { get; private set; }
-    [SerializeField] private float _detectionDistance;
-    [SerializeField] private float _timeToDetect;
+    [field:SerializeField] public float TimeToDetect { get; private set; }
+    public float StartDetectTime { get; private set; } = 0;
+    public bool IsFind { get; private set; }
 
+    [SerializeField] private float _detectionDistance;
     private float _actualDistance;
-    private float _startDetectTime = 0;
     private Vector2 _mousePos;
-    private bool _isFind;
 
     void Start()
     {
         PlayerInputHandlerBehaviour.OnPlayerTouch += GetMousePosition;
-        _isFind = this.GetComponent<SaveableItemBehaviour>().IsFound;
-        OnObjectSaveLoaded?.Invoke(this, _isFind);
+        IsFind = this.GetComponent<SaveableItemBehaviour>().IsFound;
+        OnObjectSaveLoaded?.Invoke(this, IsFind);
     }
 
     private void OnDrawGizmos()
@@ -39,26 +39,26 @@ public class DetectionBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (_isFind) return;
+        if (IsFind) return;
 
         _actualDistance = Vector3.Distance(Camera.main.WorldToScreenPoint(transform.position), Camera.main.WorldToScreenPoint(_mousePos));
 
         if (_actualDistance <= _detectionDistance)
         {
-            if(_startDetectTime == 0)
+            if(StartDetectTime == 0)
             {
                 OnObjectWaiting?.Invoke(this);
-                _startDetectTime = Time.time;
+                StartDetectTime = Time.time;
             }
 
-            else if (Time.time - _startDetectTime >= _timeToDetect)
+            else if (Time.time - StartDetectTime >= TimeToDetect)
             {
                 OnObjectFound?.Invoke(this);
-                _isFind = true;
+                IsFind = true;
             }
         }
 
-        else _startDetectTime = 0;
+        else StartDetectTime = 0;
     }
 
     private void OnDestroy()

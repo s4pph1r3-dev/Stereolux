@@ -23,10 +23,10 @@ public class ManagerGalleryBehaviour : MonoBehaviour
 
     private void Start()
     {
-        JustDoIt();
+        LoadSave();
     }
 
-    public void JustDoIt()
+    public void LoadSave()
     {
         for (int i = 0; i < _LockSprite.Count; i++)
         {
@@ -35,5 +35,17 @@ public class ManagerGalleryBehaviour : MonoBehaviour
                 _LockSprite[i].SetActive(false);
             }
         }
+    }
+
+    public bool IsAllProgramFound()
+    {
+        for (int i = 0; i < _LockSprite.Count; i++)
+        {
+            if (!SaveManager.HasBeenFound(ItemType.PROGRAM, i))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
