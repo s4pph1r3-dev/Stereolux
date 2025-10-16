@@ -5,9 +5,14 @@ using System.Threading.Tasks;
 public class SceneLoadingHandlerBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _player;
+    private GameObject _previousLevel;
 
-    public async void LoadNextLevel()
+    private void Awake()
+    {
+        if(SceneManager.GetActiveScene().buildIndex - 1 < 0) _previousLevel.SetActive(false);
+    }
+
+    public async void LoadNextLevel() // Loops back ?
     {
         await Task.Yield();
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
