@@ -19,6 +19,14 @@ public class ManagerGalleryBehaviour : MonoBehaviour
         {
             Destroy(this);
         }
+
+        SaveManager.SetAsFound(ItemType.PROGRAM, 0);
+        SaveManager.SetAsFound(ItemType.PROGRAM, 1);
+        SaveManager.SetAsFound(ItemType.PROGRAM, 2);
+        SaveManager.SetAsFound(ItemType.PROGRAM, 3);
+        SaveManager.SetAsFound(ItemType.PROGRAM, 4);
+        SaveManager.SetAsFound(ItemType.PROGRAM, 5);
+        SaveManager.SetAsFound(ItemType.PROGRAM, 6);
     }
 
     private void Start()
